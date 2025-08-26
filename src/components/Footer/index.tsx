@@ -1,175 +1,240 @@
 "use client"
 
-import Link from "next/link";
-import { Separator } from "../ui/separator";
-import { useIsMobile } from "@/hooks/use-mobile";
-import './index.css'
+import Link from "next/link"
+import Image from "next/image"
+import { Separator } from "../ui/separator"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { 
+    FacebookIcon, 
+    TwitterIcon, 
+    InstagramIcon, 
+    LinkedinIcon, 
+    YoutubeIcon, 
+    MailIcon, 
+    MapPinIcon, 
+    PhoneIcon,
+    ArrowUpIcon
+} from "lucide-react"
+import { Button } from "../ui/button"
 
-const Footer=()=>{
-    const isMobile=useIsMobile()
-    return(
-        <footer className="bottom-0 position-fixed px-[10%] py-4" id="footer">
-            <section>
-                {!isMobile?
-                <>
-                {/* <Separator className="bg-white h-[2px] my-4"/> */}
-                <section className="flex flex-row flex-wrap justify-between px-10">
-                    <section className="m-4">
-                        <h1>Quick Links</h1>
-                        <Link href="/">
-                            <p>Home</p>
-                        </Link>
-                        <Link href="/internships">
-                            <p>Internships</p>
-                        </Link>
-                        <Link href="/courses">
-                            <p>Courses</p>
-                        </Link>
-                        <Link href="/jobs">
-                            <p>Jobs</p>
-                        </Link>
-                        <Link href="/roadmap">
-                            <p>Roadmaps / Learning Tracks</p>
-                        </Link>
-                        <Link href="/guidance">
-                            <p>Mentorship / Guidance</p>
-                        </Link>
-                    </section>
-                    <Separator orientation="vertical"/>
-                    <section className="m-4">
-                        <h1>Explore Opportunities</h1>
-                        <Link href="/internships-for-students">
-                            <p>Internships for Students</p>
-                        </Link>
-                        <Link href="/remote-internships">
-                            <p>Remote Internships</p>
-                        </Link>
-                        <Link href="/jobs-for-freshers">
-                            <p>Jobs for Freshers</p>
-                        </Link>
-                        <Link href="/trending-roles">
-                            <p>Trending Roles</p>
-                        </Link>
-                        <Link href="/internships-with-stipend">
-                            <p>Internships with Stipend</p>
-                        </Link>
-                        <Link href="/work-from-home">
-                            <p>Work From Home Jobs</p>
-                        </Link>
-                    </section>
-                    <Separator orientation="vertical"/>
-                    <section className="m-4">
-                        <h1>Upskill with Purpose</h1>
-                        <Link href="/full-stack-development-course">
-                            <p>Learn Full Stack Development</p>
-                        </Link>
-                        <Link href="/data-analyst-course">
-                            <p>Become a Data Analyst</p>
-                        </Link>
-                        <Link href="/digital-marketing-bootcamp">
-                            <p>Digital Marketing Bootcamp</p>
-                        </Link>
-                        <Link href="/career-tracks">
-                            <p>Structured Career Tracks</p>
-                        </Link>
-                        <Link href="/mock-interviews">
-                            <p>Practice Interviews</p>
-                        </Link>
-                        <Link href="/certifications">
-                            <p>Certification Portal</p>
-                        </Link>
-                    </section>
-                    <Separator orientation="vertical"/>
-                    <section className="m-4">
-                        <h1>Career Tools & Help</h1>
-                        <Link href="/resume-builder">
-                            <p>Resume Builder</p>
-                        </Link>
-                        <Link href="/roadmap">
-                            <p>Career Roadmaps</p>
-                        </Link>
-                        <Link href="/mock-interview">
-                            <p>Mock Interviews</p>
-                        </Link>
-                        <Link href="/guidance">
-                            <p>Mentorship Sessions</p>
-                        </Link>
-                        <Link href="/placement-guidance">
-                            <p>Placement Guidance</p>
-                        </Link>
-                        <Link href="/faq">
-                            <p>Community Q&A</p>
-                        </Link>
-                    </section>
-                    <Separator orientation="vertical" className="bg-gray-500 h-[2px] my-4"/>
-                    <section className="m-4">
-                        <h1>For Companies</h1>
-                        <Link href="/company/hire-interns">
-                            <p>Hire Interns</p>
-                        </Link>
-                        <Link href="/company/hire-job-seekers">
-                            <p>Hire Job Seekers</p>
-                        </Link>
-                        <Link href="/company/partner-with-us">
-                            <p>Partner With Us</p>
-                        </Link>
-                        <Link href="/company/hire-ambassador">
-                            <p>Campus Ambassador Hiring</p>
-                        </Link>
-                        <Link href="/company/company-reviews">
-                            <p>Company Reviews</p>
-                        </Link>
-                    </section>
-                </section>
-                </>:
-                null}
-                <Separator className="bg-gray-400 h-[2px] my-4"/>
-                <section className="flex flex-row flex-wrap justify-start gap-20 px-10">
-                    <section>
-                        <h1>Inside OneStep</h1>
-                        <Link href="/insides/about">
-                            <p>About Us</p>
-                        </Link>
-                        <Link href="/insides/our-story">
-                            <p>Our Story</p>
-                        </Link>
-                        <Link href="/insides/careers">
-                            <p>Careers @ OneStep</p>
-                        </Link>
-                        <Link href="/insides/blog">
-                            <p>Blog & Resources</p>
-                        </Link>
-                        <Link href="/insides/media">
-                            <p>Press / Media</p>
-                        </Link>
-                        <Link href="/insides/contact">
-                            <p>Contact Us</p>
-                        </Link>
-                    </section>
-                    <section>
-                        <h1>Legal & Support</h1>
-                        <Link href="/legal/privacy-policy">
-                            <p>Privacy Policy</p>
-                        </Link>
-                        <Link href="/legal/terms">
-                            <p>Terms of Use</p>
-                        </Link>
-                        <Link href="/legal/refund-policy">
-                            <p>Refund Policy</p>
-                        </Link>
-                        <Link href="/legal/report">
-                            <p>Report an Issue</p>
-                        </Link>
-                        <Link href="/legal/support">
-                            <p>Support Chat / Email</p>
-                        </Link>
-                    </section>
-                </section>
-            </section>
-            <Separator className="bg-gray-400 h-[2px] my-4"/>
-            <section className="mb-4 md:mb-0 flex text-center justify-center md:text-left">
-                <p>© {new Date().getFullYear()} OneStep. All rights reserved.</p>
-            </section>
+interface FooterLinkProps {
+    href: string
+    children: React.ReactNode
+    className?: string
+}
+
+const FooterLink: React.FC<FooterLinkProps> = ({ href, children, className = "" }) => (
+    <Link 
+        href={href} 
+        className={`text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm leading-relaxed block py-1 hover:underline ${className}`}
+    >
+        {children}
+    </Link>
+)
+
+interface FooterSectionProps {
+    title: string
+    children: React.ReactNode
+    className?: string
+}
+
+const FooterSection: React.FC<FooterSectionProps> = ({ title, children, className = "" }) => (
+    <div className={`space-y-4 ${className}`}>
+        <h3 className="text-gray-900 font-semibold text-base mb-4 relative">
+            {title}
+            <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+        </h3>
+        <div className="space-y-2">
+            {children}
+        </div>
+    </div>
+)
+
+const Footer: React.FC = () => {
+    const isMobile = useIsMobile()
+
+    const scrollToTop = (): void => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    return (
+        <footer className="bg-gray-50 text-gray-700 relative overflow-hidden border-t border-gray-200">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            
+            {/* Scroll to Top Button */}
+            <div className="flex justify-center py-6 border-b border-gray-200">
+                <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={scrollToTop}
+                    className="rounded-full bg-white border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-600 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                    <ArrowUpIcon className="h-4 w-4" />
+                </Button>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+                {/* Main Footer Content */}
+                {!isMobile ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                        <FooterSection title="Quick Links">
+                            <FooterLink href="/">Home</FooterLink>
+                            <FooterLink href="/internships">Internships</FooterLink>
+                            <FooterLink href="/courses">Courses</FooterLink>
+                            <FooterLink href="/jobs">Jobs</FooterLink>
+                            <FooterLink href="/roadmap">Roadmaps / Learning Tracks</FooterLink>
+                            <FooterLink href="/guidance">Mentorship / Guidance</FooterLink>
+                        </FooterSection>
+
+                        <FooterSection title="Explore Opportunities">
+                            <FooterLink href="/internships-for-students">Internships for Students</FooterLink>
+                            <FooterLink href="/remote-internships">Remote Internships</FooterLink>
+                            <FooterLink href="/jobs-for-freshers">Jobs for Freshers</FooterLink>
+                            <FooterLink href="/trending-roles">Trending Roles</FooterLink>
+                            <FooterLink href="/internships-with-stipend">Internships with Stipend</FooterLink>
+                            <FooterLink href="/work-from-home">Work From Home Jobs</FooterLink>
+                        </FooterSection>
+
+                        <FooterSection title="Upskill with Purpose">
+                            <FooterLink href="/full-stack-development-course">Learn Full Stack Development</FooterLink>
+                            <FooterLink href="/data-analyst-course">Become a Data Analyst</FooterLink>
+                            <FooterLink href="/digital-marketing-bootcamp">Digital Marketing Bootcamp</FooterLink>
+                            <FooterLink href="/career-tracks">Structured Career Tracks</FooterLink>
+                            <FooterLink href="/mock-interviews">Practice Interviews</FooterLink>
+                            <FooterLink href="/certifications">Certification Portal</FooterLink>
+                        </FooterSection>
+
+                        <FooterSection title="Career Tools & Help">
+                            <FooterLink href="/resume-builder">Resume Builder</FooterLink>
+                            <FooterLink href="/roadmap">Career Roadmaps</FooterLink>
+                            <FooterLink href="/mock-interview">Mock Interviews</FooterLink>
+                            <FooterLink href="/guidance">Mentorship Sessions</FooterLink>
+                            <FooterLink href="/placement-guidance">Placement Guidance</FooterLink>
+                            <FooterLink href="/faq">Community Q&A</FooterLink>
+                        </FooterSection>
+
+                        <FooterSection title="For Companies">
+                            <FooterLink href="/company/hire-interns">Hire Interns</FooterLink>
+                            <FooterLink href="/company/hire-job-seekers">Hire Job Seekers</FooterLink>
+                            <FooterLink href="/company/partner-with-us">Partner With Us</FooterLink>
+                            <FooterLink href="/company/hire-ambassador">Campus Ambassador Hiring</FooterLink>
+                            <FooterLink href="/company/company-reviews">Company Reviews</FooterLink>
+                        </FooterSection>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 gap-6 mb-12">
+                        <FooterSection title="Quick Links">
+                            <FooterLink href="/">Home</FooterLink>
+                            <FooterLink href="/internships">Internships</FooterLink>
+                            <FooterLink href="/courses">Courses</FooterLink>
+                            <FooterLink href="/jobs">Jobs</FooterLink>
+                        </FooterSection>
+                        <FooterSection title="For Companies">
+                            <FooterLink href="/company/hire-interns">Hire Interns</FooterLink>
+                            <FooterLink href="/company/hire-job-seekers">Hire Job Seekers</FooterLink>
+                            <FooterLink href="/company/partner-with-us">Partner With Us</FooterLink>
+                        </FooterSection>
+                    </div>
+                )}
+
+                {/* Secondary Links */}
+                <div className="border-t border-gray-200 pt-8 mb-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <FooterSection title="Inside OneStep">
+                            <FooterLink href="/insides/about">About Us</FooterLink>
+                            <FooterLink href="/insides/our-story">Our Story</FooterLink>
+                            <FooterLink href="/insides/careers">Careers @ OneStep</FooterLink>
+                            <FooterLink href="/insides/blog">Blog & Resources</FooterLink>
+                            <FooterLink href="/insides/media">Press / Media</FooterLink>
+                            <FooterLink href="/insides/contact">Contact Us</FooterLink>
+                        </FooterSection>
+
+                        <FooterSection title="Legal & Support">
+                            <FooterLink href="/legal/privacy-policy">Privacy Policy</FooterLink>
+                            <FooterLink href="/legal/terms">Terms of Use</FooterLink>
+                            <FooterLink href="/legal/refund-policy">Refund Policy</FooterLink>
+                            <FooterLink href="/legal/report">Report an Issue</FooterLink>
+                            <FooterLink href="/legal/support">Support Chat / Email</FooterLink>
+                        </FooterSection>
+
+                        <div className="space-y-6">
+                            <FooterSection title="Connect With Us">
+                                <div className="flex space-x-4">
+                                    <Link href="#" className="text-gray-500 hover:text-blue-600 transition-colors duration-200">
+                                        <FacebookIcon className="h-5 w-5" />
+                                    </Link>
+                                    
+                                    <Link href="#" className="text-gray-500 hover:text-pink-500 transition-colors duration-200">
+                                        <InstagramIcon className="h-5 w-5" />
+                                    </Link>
+                                    <Link href="#" className="text-gray-500 hover:text-blue-700 transition-colors duration-200">
+                                        <LinkedinIcon className="h-5 w-5" />
+                                    </Link>
+                                    
+                                </div>
+                            </FooterSection>
+
+                            <div className="space-y-3">
+                                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                                    <MailIcon className="h-4 w-4 text-gray-500" />
+                                    <span>mylogintrails@gmail.com</span>
+                                </div>
+                                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                                    <PhoneIcon className="h-4 w-4 text-gray-500" />
+                                    <span>+91 7569998462</span>
+                                </div>
+                                <div className="flex items-start space-x-2 text-sm text-gray-600">
+                                    <MapPinIcon className="h-4 w-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                                    <span>Hyderabad, Telangana, India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Brand Section */}
+                <div className="border-t border-gray-200 pt-8 mb-8">
+                    <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div className="flex items-center space-x-3">
+                            <Image 
+                                src="/One.svg" 
+                                alt="OneStep logo" 
+                                width={40} 
+                                height={40}
+                                className="opacity-90"
+                            />
+                            <div>
+                                <h2 className="text-xl font-bold text-gray-900">OneStep</h2>
+                                <p className="text-sm text-gray-600">Toward a Better You</p>
+                            </div>
+                        </div>
+                        
+                        <div className="text-center md:text-right">
+                            <p className="text-sm text-gray-600 mb-2">
+                                Empowering careers through learning and opportunities
+                            </p>
+                            <div className="flex flex-wrap justify-center md:justify-end gap-2 text-xs text-gray-500">
+                                <span>Made for you</span>
+                                <span>•</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Copyright */}
+                <div className="border-t border-gray-200 pt-6 text-center">
+                    <p className="text-sm text-gray-500">
+                        © {new Date().getFullYear()} OneStep. All rights reserved. 
+                        <span className="mx-2">|</span>
+                        Building the future of career development.
+                    </p>
+                </div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 via-blue-500 to-yellow-400"></div>
+
         </footer>
     )
 }
