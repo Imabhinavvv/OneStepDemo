@@ -173,7 +173,7 @@ export default function SignupForm({ toggleForm }: SignupFormProps) {
           />
           <Button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-2"
+            className="w-full bg-gray-600 hover:scale-102 text-white rounded-lg py-2"
             disabled={isLoading}
           >
             {isLoading ? "Signing Up..." : "Sign Up"}

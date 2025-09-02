@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import Cookies from 'js-cookie';
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -36,6 +38,7 @@ interface LoginFormProps {
 export default function LoginForm({ toggleForm }: LoginFormProps) {
   const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -51,8 +54,13 @@ export default function LoginForm({ toggleForm }: LoginFormProps) {
     try {
       // Mock API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSubmitStatus({ type: "success", message: "Login successful!" });
-      setTimeout(() => form.reset(), 2000);
+      // Simulate successful auth: set token and redirect
+      Cookies.set("jwtToken", "Hello");
+      setSubmitStatus({ type: "success", message: "Login successful! Redirecting..." });
+      setTimeout(() => {
+        form.reset();
+        router.push("/");
+      }, 500);
       console.log(data)
     } catch (error) {
       console.log(error)
@@ -114,7 +122,7 @@ export default function LoginForm({ toggleForm }: LoginFormProps) {
           />
           <Button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-2"
+            className="w-full bg-gray-600 hover:scale-102 text-white rounded-lg py-2"
             disabled={isLoading}
           >
             {isLoading ? "Logging In..." : "Login"}

@@ -25,10 +25,12 @@ import Cookies from 'js-cookie'
 import { useEffect, useState } from "react"
 import { NavigationMenuDemo } from "./navbar-menu"
 import { CollapsibleDemo } from "./navbar-hammenu"
+import { useRouter } from "next/navigation"
 
 const Header: React.FC = () => {
     const isMobile = useIsMobile()
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+    const router = useRouter()
 
     useEffect(() => {
         const token = Cookies.get("jwtToken")
@@ -36,13 +38,13 @@ const Header: React.FC = () => {
     }, [])
 
     const handleLogin = (): void => {
-        Cookies.set("jwtToken", "Hello")
-        setIsLoggedIn(true)
+        router.push('/login')
     }
 
     const handleLogout = (): void => {
         Cookies.remove("jwtToken")
         setIsLoggedIn(false)
+        router.push('/')
     }
 
     return (
@@ -57,7 +59,7 @@ const Header: React.FC = () => {
                                 alt="OneStep logo" 
                                 width={45} 
                                 height={45}
-                                className="transition-transform duration-200 hover:scale-105"
+                                className="transition-transform duration-200 hover:scale-102"
                             />
                         </div>
                         <span className="hidden sm:block text-xl font-bold text-gray-900 tracking-tight">
@@ -115,7 +117,7 @@ const Header: React.FC = () => {
                                 ) : (
                                     <Button 
                                         variant="default" 
-                                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105"
+                                        className="bg-black hover:bg-black/90 text-white font-medium px-6 py-2 rounded-full shadow-md hover:scale-102 transition-all duration-200"
                                         onClick={handleLogin}
                                     >
                                         Login / Register
@@ -193,7 +195,7 @@ const Header: React.FC = () => {
                                         {!isLoggedIn && (
                                             <div className="pt-4 border-t border-gray-200">
                                                 <Button 
-                                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200"
+                                                    className="w-full bg-black hover:bg-black/90 text-white font-medium py-3 rounded-full shadow-md hover:scale-102 transition-all duration-200"
                                                     onClick={handleLogin}
                                                 >
                                                     <Link href="/login" className="w-full">
