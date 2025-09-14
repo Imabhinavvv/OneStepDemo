@@ -1,9 +1,11 @@
 "use client"
 
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Separator } from "../ui/separator"
 import { useIsMobile } from "@/hooks/use-mobile"
+import "./index.css"
 import { 
     FacebookIcon, 
     TwitterIcon, 
@@ -15,7 +17,6 @@ import {
     PhoneIcon,
     ArrowUpIcon
 } from "lucide-react"
-import { Button } from "../ui/button"
 
 interface FooterLinkProps {
     href: string
@@ -52,9 +53,56 @@ const FooterSection: React.FC<FooterSectionProps> = ({ title, children, classNam
 
 const Footer: React.FC = () => {
     const isMobile = useIsMobile()
+    const [showScrollButton, setShowScrollButton] = useState(false)
+
+    // Show/hide scroll button when user reaches bottom of page
+    useEffect(() => {
+        const handleScroll = () => {
+            if (typeof window !== 'undefined') {
+                const scrollTop = window.scrollY
+                const windowHeight = window.innerHeight
+                const documentHeight = document.documentElement.scrollHeight
+                
+                // Show button when user is near the bottom (within 200px of footer)
+                const isNearBottom = scrollTop + windowHeight >= documentHeight - 200
+                setShowScrollButton(isNearBottom)
+            }
+        }
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', handleScroll)
+            // Check initial state
+            handleScroll()
+            return () => window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     const scrollToTop = (): void => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        // Check if window is available (client-side)
+        if (typeof window === 'undefined') {
+            return
+        }
+        
+        // Check if we're already at the top
+        if (window.scrollY === 0) {
+            return
+        }
+        
+        // Smooth scroll to top
+        window.scrollTo({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+        })
+        
+        // Fallback for older browsers or if smooth scroll fails
+        setTimeout(() => {
+            if (window.scrollY > 50) {
+                // If still not at top after smooth scroll attempt, force scroll
+                document.documentElement.scrollTop = 0
+                document.body.scrollTop = 0
+            }
+        }, 100)
     }
 
     return (
@@ -62,17 +110,22 @@ const Footer: React.FC = () => {
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
             
-            {/* Scroll to Top Button */}
-            <div className="flex justify-center py-6 border-b border-gray-200">
-                <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={scrollToTop}
-                    className="rounded-full bg-white border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-600 hover:text-gray-800 transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                    <ArrowUpIcon className="h-4 w-4" />
-                </Button>
-            </div>
+            {/* Scroll to Top Button - Footer Corner */}
+            {showScrollButton && (
+                <div className="absolute bottom-6 right-6 z-10">
+                    <button
+                        onClick={scrollToTop}
+                        className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-gray-300 focus:ring-opacity-50 group animate-fade-in"
+                        aria-label="Scroll to top of page"
+                        title="Scroll to top"
+                        type="button"
+                    >
+                        <ArrowUpIcon className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-active:scale-90" />
+                        {/* Subtle glow effect */}
+                        <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-sm"></div>
+                    </button>
+                </div>
+            )}
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
                 {/* Main Footer Content */}
